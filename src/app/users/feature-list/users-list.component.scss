@@ -1,7 +1,7 @@
 .list {
   @apply flex;
   @apply bg-white;
-  @apply shadow-sm;
+  @apply shadow-md;
   @apply my-2;
   @apply px-4;
   @apply py-3;
@@ -9,7 +9,7 @@
 }
 
 .list:hover {
-  @apply shadow-md;
+  @apply shadow-xl;
   @apply cursor-pointer;
 }
 

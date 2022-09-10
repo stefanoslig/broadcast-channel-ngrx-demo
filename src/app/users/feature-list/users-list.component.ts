@@ -9,9 +9,15 @@ import { AssignedLearningsModalComponent } from './assigned-learnings-modal/assi
 import { Learning } from 'src/app/shared/api-types/learning';
 import { AvatarComponentModule } from 'src/app/ui/avatar/avatar.component';
 import { Store } from '@ngrx/store';
-import { ModalService } from 'src/app/ui/modal';
+import { ModalRef, ModalService } from 'src/app/ui/modal';
 import { selectUsers } from '../data-access/users.selectors';
 import { usersActions } from '../data-access/users.actions';
+import {
+  AddUserModalComponent,
+  ModalData,
+} from './add-user-modal/add-user-modal.component';
+import { filter, take } from 'rxjs';
+import { User } from 'src/app/shared/api-types/user';
 
 @Component({
   selector: 'abc-users-list',
@@ -21,6 +27,7 @@ import { usersActions } from '../data-access/users.actions';
 })
 export class UsersListComponent implements OnInit {
   users$ = this.store.select(selectUsers);
+  private _modalRef!: ModalRef;
 
   constructor(
     private readonly store: Store,
@@ -29,6 +36,25 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(usersActions.fetchUsers());
+  }
+
+  openAddUser() {
+    this._modalRef = this.modalService.open(AddUserModalComponent);
+    this.subscribeToAddUserModal();
+  }
+
+  private subscribeToAddUserModal() {
+    this._modalRef
+      .afterClosed<ModalData>()
+      .pipe(
+        filter((data) => data.action === 'addUser'),
+        take(1)
+      )
+      .subscribe((data) =>
+        this.store.dispatch(
+          usersActions.addUser({ user: data.value as Partial<User> })
+        )
+      );
   }
 
   openAssignedLearnings(learnings: Array<Learning>) {

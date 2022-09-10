@@ -2,7 +2,9 @@ header {
   @apply flex;
   @apply justify-between;
   @apply items-center;
-  @apply m-12;
+  @apply ml-20;
+  @apply mr-20;
+  @apply mt-10;
 
   .title {
     @apply bg-gradient-to-r from-purple-400 to-blue-600;

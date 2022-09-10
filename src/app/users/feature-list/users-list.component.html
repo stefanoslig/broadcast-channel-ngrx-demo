@@ -1,7 +1,10 @@
+<button (click)="openAddUser()">Add user +</button>
+
 <ul>
   <li *ngFor="let user of users$ | async" class="list">
     <div class="list-item list-item-name">
-      <abc-avatar class="avatar" [name]="user.name"></abc-avatar><span>{{ user.name }}</span>
+      <abc-avatar class="avatar" [name]="user.name"></abc-avatar
+      ><span>{{ user.name }}</span>
     </div>
     <span class="list-item">{{ user.email }}</span>
     <div class="list-item">
