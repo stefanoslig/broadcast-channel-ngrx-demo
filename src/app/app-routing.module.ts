@@ -12,15 +12,13 @@ import { RouterModule } from '@angular/router';
       {
         path: 'users',
         loadChildren: () =>
-          import('src/app/users/feature-shell').then(
-            (m) => m.UsersFeatureShellModule
-          ),
+          import('src/app/users/feature-list').then((m) => m.FeatureListModule),
       },
       {
         path: 'learnings',
         loadChildren: () =>
-          import('src/app/learnings/feature-shell').then(
-            (m) => m.LearningsFeatureShellModule
+          import('src/app/learnings/feature-list').then(
+            (m) => m.FeatureListModule
           ),
       },
     ]),

@@ -5,10 +5,13 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersStoreService } from '@abc/users/data-access';
-import { AvatarComponentModule, ModalService } from '@abc/shared/ui';
 import { AssignedLearningsModalComponent } from './assigned-learnings-modal/assigned-learnings-modal.component';
-import { Learning } from '@abc/shared/api-types';
+import { Learning } from 'src/app/shared/api-types/learning';
+import { AvatarComponentModule } from 'src/app/ui/avatar/avatar.component';
+import { Store } from '@ngrx/store';
+import { ModalService } from 'src/app/ui/modal';
+import { selectUsers } from '../data-access/users.selectors';
+import { usersActions } from '../data-access/users.actions';
 
 @Component({
   selector: 'abc-users-list',
@@ -17,15 +20,15 @@ import { Learning } from '@abc/shared/api-types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent implements OnInit {
-  users$ = this.usersStoreService.users$;
+  users$ = this.store.select(selectUsers);
 
   constructor(
-    private readonly usersStoreService: UsersStoreService,
+    private readonly store: Store,
     private readonly modalService: ModalService
   ) {}
 
   ngOnInit() {
-    this.usersStoreService.fetchUsers();
+    this.store.dispatch(usersActions.fetchUsers());
   }
 
   openAssignedLearnings(learnings: Array<Learning>) {
@@ -33,7 +36,7 @@ export class UsersListComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.usersStoreService.deleteUser(id);
+    this.store.dispatch(usersActions.deleteUser({ id }));
   }
 }
 

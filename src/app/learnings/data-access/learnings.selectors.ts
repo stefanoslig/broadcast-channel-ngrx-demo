@@ -1,3 +1,3 @@
 import { learningsFeature } from './learnings.reducer';
 
-export const {} = learningsFeature;
+export const { selectLearnings } = learningsFeature;

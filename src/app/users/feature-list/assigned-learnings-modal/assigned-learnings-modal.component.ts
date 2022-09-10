@@ -5,8 +5,8 @@ import {
   Inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalRef, MODAL_DATA } from '@abc/shared/ui';
-import { Learning } from '@abc/shared/api-types';
+import { ModalRef, MODAL_DATA } from 'src/app/ui/modal';
+import { Learning } from 'src/app/shared/api-types/learning';
 
 @Component({
   selector: 'abc-assigned-learnings-modal',

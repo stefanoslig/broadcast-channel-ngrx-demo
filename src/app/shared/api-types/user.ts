@@ -1,4 +1,4 @@
-import { Learning } from '..';
+import { Learning } from './learning';
 
 export interface User {
   id: number;

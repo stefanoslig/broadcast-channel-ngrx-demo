@@ -9,7 +9,7 @@
         delete
       </button>
       <button
-        *ngIf="user.learnings.length > 0"
+        *ngIf="user.learnings && user.learnings.length > 0"
         (click)="openAssignedLearnings(user.learnings)"
         class="list-item-action"
       >

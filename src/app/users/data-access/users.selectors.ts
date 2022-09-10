@@ -1,3 +1,3 @@
 import { usersFeature } from './users.reducer';
 
-export const {} = usersFeature;
+export const { selectUsers } = usersFeature;
