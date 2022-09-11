@@ -6,18 +6,18 @@ import { RouterModule } from '@angular/router';
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: 'users',
+        redirectTo: 'students',
         pathMatch: 'full',
       },
       {
-        path: 'users',
+        path: 'students',
         loadChildren: () =>
-          import('src/app/users/feature-list').then((m) => m.FeatureListModule),
+          import('src/app/students/feature-list').then((m) => m.FeatureListModule),
       },
       {
-        path: 'learnings',
+        path: 'lessons',
         loadChildren: () =>
-          import('src/app/learnings/feature-list').then(
+          import('src/app/lessons/feature-list').then(
             (m) => m.FeatureListModule
           ),
       },

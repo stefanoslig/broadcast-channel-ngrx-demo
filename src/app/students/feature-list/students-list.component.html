@@ -1,0 +1,23 @@
+<button (click)="openAddStudent()">Add student +</button>
+
+<ul>
+  <li *ngFor="let student of students$ | async" class="list">
+    <div class="list-item list-item-name">
+      <abc-avatar class="avatar" [name]="student.name"></abc-avatar
+      ><span>{{ student.name }}</span>
+    </div>
+    <span class="list-item">{{ student.email }}</span>
+    <div class="list-item">
+      <button class="list-item-action" (click)="deleteStudent(student.id)">
+        delete
+      </button>
+      <button
+        *ngIf="student.lessons && student.lessons.length > 0"
+        (click)="openAssignedLessons(student.lessons)"
+        class="list-item-action"
+      >
+        assigned lessons
+      </button>
+    </div>
+  </li>
+</ul>

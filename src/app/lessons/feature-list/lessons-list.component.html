@@ -1,0 +1,26 @@
+<ul>
+  <li *ngFor="let lesson of lessons$ | async" class="list">
+    <span class="list-item">{{ lesson.name }}</span>
+    <span class="list-item">{{ lesson.status }}</span>
+    <div class="list-item">
+      <button class="list-item-action" (click)="deleteLesson(lesson.id)">
+        delete
+      </button>
+      <button class="list-item-action" [abcDropdownTrigger]="dropdown">
+        assign to
+      </button>
+    </div>
+
+    <abc-dropdown #dropdown>
+      <ul>
+        <li *ngFor="let student of students$ | async" class="list-item-dropdown">
+          <span
+            (click)="assignLesson(lesson.id, student.id)"
+            [ngClass]="student.id === lesson.userId ? 'selected' : ''"
+            >{{ student.name }}</span
+          >
+        </li>
+      </ul>
+    </abc-dropdown>
+  </li>
+</ul>
