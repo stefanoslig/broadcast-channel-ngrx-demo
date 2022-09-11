@@ -6,7 +6,7 @@ export interface Student {
   email: string;
 }
 
-export interface StudentEmbedLeanings {
+export interface StudentEmbedLessons {
   id: number;
   name: string;
   email: string;

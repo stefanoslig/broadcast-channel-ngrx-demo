@@ -1,9 +1,10 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { StudentEmbedLeanings } from 'src/app/shared/api-types/student';
+import { StudentEmbedLessons } from 'src/app/shared/api-types/student';
+import { broadcastedStudentsActions } from './students-broadcast.actions';
 import { studentsActions } from './students.actions';
 
 export interface StudentsStateModel {
-  students: Array<StudentEmbedLeanings>;
+  students: Array<StudentEmbedLessons>;
 }
 
 export const initialState: StudentsStateModel = { students: [] };
@@ -16,13 +17,21 @@ export const studentsFeature = createFeature({
       ...state,
       students,
     })),
-    on(studentsActions.addStudentSuccess, (state, { student }) => ({
-      ...state,
-      students: [student, ...state.students],
-    })),
-    on(studentsActions.deleteStudentSuccess, (state, { id }) => ({
-      ...state,
-      lessons: state.students.filter((lesson) => lesson.id !== id),
-    }))
+    on(
+      studentsActions.addStudentSuccess,
+      broadcastedStudentsActions.addStudentSuccess,
+      (state, { student }) => ({
+        ...state,
+        students: [student, ...state.students],
+      })
+    ),
+    on(
+      studentsActions.deleteStudentSuccess,
+      broadcastedStudentsActions.deleteStudentSuccess,
+      (state, { id }) => ({
+        ...state,
+        lessons: state.students.filter((lesson) => lesson.id !== id),
+      })
+    )
   ),
 });

@@ -1,5 +1,6 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { Lesson } from 'src/app/shared/api-types/lesson';
+import { broadcastedLessonsActions } from './lessons-broadcast.actions';
 import { lessonsActions } from './lessons.actions';
 
 export interface LessonsStateModel {
@@ -8,7 +9,7 @@ export interface LessonsStateModel {
 
 export const initialState: LessonsStateModel = { lessons: [] };
 
-export const llessonsFeature = createFeature({
+export const lessonsFeature = createFeature({
   name: 'lessons',
   reducer: createReducer(
     initialState,
@@ -18,6 +19,7 @@ export const llessonsFeature = createFeature({
     })),
     on(
       lessonsActions.assignLessonSuccess,
+      broadcastedLessonsActions.assignLessonSuccess,
       (state, { llessonId, userId }) => ({
         ...state,
         lessons: state.lessons.map((item) => {
@@ -32,9 +34,13 @@ export const llessonsFeature = createFeature({
         }),
       })
     ),
-    on(lessonsActions.deleteLessonSuccess, (state, { id }) => ({
-      ...state,
-      lessons: state.lessons.filter((lesson) => lesson.id !== id),
-    }))
+    on(
+      lessonsActions.deleteLessonSuccess,
+      broadcastedLessonsActions.deleteLessonSuccess,
+      (state, { id }) => ({
+        ...state,
+        lessons: state.lessons.filter((lesson) => lesson.id !== id),
+      })
+    )
   ),
 });

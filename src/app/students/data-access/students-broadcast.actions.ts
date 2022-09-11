@@ -1,8 +1,10 @@
-import { createActionGroup, emptyProps } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { StudentEmbedLessons } from 'src/app/shared/api-types/student';
 
 export const broadcastedStudentsActions = createActionGroup({
-  source: 'Broadcasted students',
+  source: 'Broadcasted Students',
   events: {
-    s: emptyProps(),
+    'delete student success': props<{ id: number }>(),
+    'add student success': props<{ student: StudentEmbedLessons }>(),
   },
 });

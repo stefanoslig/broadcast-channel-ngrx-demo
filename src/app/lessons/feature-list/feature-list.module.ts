@@ -7,14 +7,14 @@ import {
 } from './lessons-list.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { llessonsFeature } from '../data-access/lessons.reducer';
+import { lessonsFeature } from '../data-access/lessons.reducer';
 import { LessonsEffects } from '../data-access/lessons.effects';
 
 @NgModule({
   imports: [
     CommonModule,
     LessonsListComponentModule,
-    StoreModule.forFeature(llessonsFeature),
+    StoreModule.forFeature(lessonsFeature),
     EffectsModule.forFeature([LessonsEffects]),
     RouterModule.forChild([
       {

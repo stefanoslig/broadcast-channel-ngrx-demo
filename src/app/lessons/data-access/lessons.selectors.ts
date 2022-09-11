@@ -1,3 +1,3 @@
-import { llessonsFeature } from './lessons.reducer';
+import { lessonsFeature } from './lessons.reducer';
 
-export const { selectLessons } = llessonsFeature;
+export const { selectLessons } = lessonsFeature;
