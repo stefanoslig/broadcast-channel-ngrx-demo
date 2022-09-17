@@ -1,21 +1,6 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Ester Ayutthaya",
-      "email": "lakshmi.shaikh@juno.io"
-    },
-    {
-      "id": 2,
-      "name": "Martha Shevchenko",
-      "email": "meigriffiths235@outlook.biz"
-    },
-    {
-      "id": 3,
-      "name": "Watsana Udo",
-      "email": "pieter+saengthong@terra.io"
-    },
-    {
       "id": 4,
       "name": "Phonthip Pospíšilová",
       "email": "jabulani_kobayashi348@aol.biz"

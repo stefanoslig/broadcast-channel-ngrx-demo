@@ -30,7 +30,7 @@ export const studentsFeature = createFeature({
       broadcastedStudentsActions.deleteStudentSuccess,
       (state, { id }) => ({
         ...state,
-        lessons: state.students.filter((lesson) => lesson.id !== id),
+        students: state.students.filter((student) => student.id !== id),
       })
     )
   ),

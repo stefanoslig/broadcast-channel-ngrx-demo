@@ -5,7 +5,6 @@ interface BcAction extends Action {
   state: StateObject;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export type StateObject = {};
 
 export function bcStateInitializer(
