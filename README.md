@@ -1,4 +1,4 @@
-### This is the demo app for the following article: [WIP](https://github.com/stefanoslig/blog/pull/6)
+### This is the demo app for the following article: [WIP](https://blog-8avw29wza-stefanoslig.vercel.app/posts/synchronizing-app-state-across-iframes)
 
 ![Demo](./demo.gif)
 
